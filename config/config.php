@@ -1,9 +1,11 @@
 <?php
+
     class Database {
         private $hostname = 'localhost';
         private $username = 'root';
         private $password = '';
         private $dbname = 'laptop68';
+        
 
         private $conn;
 

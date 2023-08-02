@@ -1,6 +1,6 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT']."/PhoneLand/models/Model.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Laptop68/models/Model.php");
 class OrderModel extends Model{
     public $id;
     public $user_id;
@@ -183,7 +183,8 @@ FROM orders";
         return false;
     }
     public function delete($id){
-        $query = "DELETE FROM orders WHERE id = :id";
+        $query = 'DELETE FROM order_details WHERE order_id = :id;
+                DELETE FROM orders WHERE id = :id;';
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

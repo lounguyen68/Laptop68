@@ -1,6 +1,6 @@
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT']."/PhoneLand/models/Model.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Laptop68/models/Model.php");
 
 class ProductModel extends Model{
     public $id;

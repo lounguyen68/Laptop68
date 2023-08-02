@@ -1,5 +1,6 @@
 <?php
-    include_once("../config/config.php");
+
+    include_once("C:/xampp2/htdocs/Laptop68/config/config.php");
 
     class Model {
         public $conn;
