@@ -15,7 +15,7 @@ $user -> username = $data -> username;
 $user -> password = $data -> password;
 
 $stmt = $user -> getPassword($user -> username);
-
+$stmt2 = $user -> getStatus($user -> username);
 
 if($stmt -> rowCount() <= 0) {
     $user_info = [
@@ -24,17 +24,24 @@ if($stmt -> rowCount() <= 0) {
     ];
 }else {
     $data2 = $stmt -> fetch();
-
     $password = $user -> password;
-
     $hashed_password = $data2['password'];
 
     if (password_verify($password, $hashed_password)) {
-        $user_info = [
-            "status" => "success",
-            "message" => "Login successful",
-            "id" => $data2['id']
-        ];
+        $data3 = $stmt2 -> fetch();
+        $status = $data3['status'];
+        if($status) {
+            $user_info = [
+                "status" => "success",
+                "message" => "Login successful",
+                "id" => $data2['id']
+            ];
+        } else {
+            $user_info = [
+                "status" => "fail",
+                "message" => "Account banned !",
+            ];
+        }
     } else {
         $user_info = [
             "status" => "fail",

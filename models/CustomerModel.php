@@ -201,4 +201,11 @@ VALUES(:username, :password, :first_name, :last_name, :phone,  :email ,:status)"
         $stmt -> execute();
         return $stmt;
     }
+    public function getStatus($username){
+        $sql = "SELECT status, id FROM users WHERE username =:username";
+        $stmt = $this -> conn -> prepare($sql);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt -> execute();
+        return $stmt;
+    }
 }
